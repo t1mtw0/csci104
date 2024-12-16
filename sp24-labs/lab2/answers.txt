@@ -1,0 +1,19 @@
+line 249
+The indexing on the invaders array was incorrect. This means that the correct indexing on line 252 will sometimes access something that has not been set yet.
+Changed the indexing to set the correct value to the correct location.
+
+line 27
+There is a semi-colon at the end of the first if statement, so the result_protector is always returned in the block immediately following it.
+Removed the semi-colon
+
+line 62
+In the for loop on this line, there is no update statement that changes the colIdx variable. Thus, colIdx is at 0 always.
+Added a third statement to the for loop to increment the colIdx variable.
+
+line 218
+When we allocated the invaders array, we did it with m rows and n columns. However, when we deallocated it, we used n rows and m columns.
+Changed the rows to m and columns to n in the function call.
+
+line 113, line 117
+The if statements are reversed, the protector loses if its power is greater.
+Changed the < to a > in both if statements

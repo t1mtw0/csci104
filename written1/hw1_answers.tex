@@ -1,0 +1,64 @@
+% preamble %
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{inputenc}
+\usepackage{enumitem}
+\usepackage{pagecolor}
+\usepackage{pdflscape}
+\usepackage{lmodern}
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=.5cm,bottom=2cm}
+% end preamble %
+
+\begin{document}
+\pagenumbering{gobble}
+\pagecolor{white}
+
+\begin{sloppypar}
+
+\title{CSCI104 Written Homework 1}
+
+\author{Timothy Tso}
+
+\maketitle
+
+\begin{enumerate}
+    \item Problem 1
+    \begin{enumerate}[label=(\alph*)]
+        \item Observe that after $k$ iterations of the loop we have $i=2^{2^k}$. Since the body of the loop only runs when $i<n$, we have that for some $n$, the loop runs
+
+        \[ \lfloor \log_{2} (\log_{2} (n-1)) \rfloor \]
+
+        times. Therefore the runtime is $\lfloor \log_{2} (\log_{2} (n-1)) \rfloor \cdot \Theta(1) = \Theta(\log (\log (n)))$.
+        \item Observe that for some $n$, the inner for loop runs $n/\lfloor \sqrt{n} \rfloor$ times. Since the inner loop scales at a factor of $n^3$, the runtime of the inner loop is $\Theta(n^3)$. All together, the runtime is
+
+        \[ n/\lfloor \sqrt{n} \rfloor \cdot \Theta(n^3) = \Theta(n^{3.5}) \]
+        \item Observe that the innermost for loop will run at most $n$ times because the array $A$ is never changed. Since the inner loop runs at $\log_{2}(n)$, we have that the upper bound runtime is $O(n^2 + n\log(n)) = O(n^2)$. On the other hand, the lower bound runtime is also $\Omega(n^2)$ since the comparison has to run at least $n^2$ times, even if the inner loop never runs.
+        \item Observe that the body of the if statement will run only if $n>10$. Since the smaller numbers of $n$ do not matter when considering runtime, we can assume $n>10$. Now observe that the body of the if statement will run
+
+        \[ \lfloor \log_{\frac 3 2}(\frac n {10}) + 1 \rfloor \]
+
+        times, and each time the body is run the number of operations is the current length of the array. Furthermore, the total number of operations coming from the $if$ body is $\Theta(n)$, so we can deduce that the runtime of the total function is $\Theta(n+n)=\Theta(n)$.
+    \end{enumerate}
+    \item Problem 2
+    \begin{enumerate}[label=(\alph*)]
+    \item We can list the recursive calls to $llrec$ as follows:
+        
+        \begin{itemize}
+            \item $llrec({p1}, {p5})$ returns 1,5,2,6,3,4
+            \item $llrec({p5}, {p2})$ returns 5,2,6,3,4
+            \item $llrec({p2}, {p6})$ returns 2,6,3,4
+            \item $llrec({p6}, {p3})$ returns 6,3,4
+            \item $llrec({p3}, NIL)$ returns 3,4
+        \end{itemize}
+        \item Since $in1=nullptr$, there is no recursive call and $in2=2$ is returned.
+    \end{enumerate}
+\end{enumerate}
+
+\end{sloppypar}
+
+\end{document}
